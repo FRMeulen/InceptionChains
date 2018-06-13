@@ -1,39 +1,36 @@
-//Inclusions
+	//Inclusions
 #include "Chain.h"
-#include <math.h>
 #include <iostream>
 
-//Namespace
+	//Namespace
 using namespace std;
 
-//Constructor
+	//Constructor
 Chain::Chain(int chainCount) {
 	chainNumber = chainCount;
 }
 
-//Destructor
+	//Destructor
 Chain::~Chain() {
 
 }
 
-//Methods
+	//Methods
+//Counts up the number
 void Chain::count() {
 	number++;
-	if (checkBoom(number)) {
-		cout << "Chain:\t" << chainNumber << endl;
-		cout << "Number:\tBOOM (" << number << ")" << endl << endl;
-	}
 }
 
-bool Chain::checkBoom(int i) {
-	int number = i;	//Original number
+//Checks if number contains 7 or is a multiple of 7
+bool Chain::checkBoom() {
+	int calcNumber = number;	//Original number
 	int toFind = 7;	//Number to find
 
-	if (number % toFind == 0) {	//If multiple of seven
+	if (calcNumber % toFind == 0) {	//If multiple of seven
 		return true;
 	}
 
-	int tempNumber = number;	//Number for calculation
+	int tempNumber = calcNumber;	//Number for calculation
 	int tempDigit;	//Digit being checked
 
 	while (tempNumber != 0) {	//While not at zero
@@ -47,10 +44,12 @@ bool Chain::checkBoom(int i) {
 	return false;	//If no seven in number return false
 }
 
+//Returns current number
 int Chain::getNumber() {
 	return number;
 }
 
+//Returns chain number
 int Chain::getChainNumber() {
 	return chainNumber;
 }
